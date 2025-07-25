@@ -1,4 +1,5 @@
 const express=require('express');
+const cookiesParser=require('cookie-parser')
 require('dotenv').config();
 const connectDB=require('./database/config');
 const authRouter=require("./routes/auth.js");
@@ -7,6 +8,7 @@ const app=express();
 connectDB();
 
 app.use(express.json())
+app.use(cookiesParser());
 app.get('/',(req,res)=>{
     res.send("Hello this is first route");
 })
